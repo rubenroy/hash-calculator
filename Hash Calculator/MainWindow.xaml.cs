@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Security.Cryptography;
+using System.IO;
 namespace Hash_Calculator
+
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,7 +27,7 @@ namespace Hash_Calculator
             InitializeComponent();
         }
 
-
+        // UI
         private void ChooseFile_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlgChooseFile = new Microsoft.Win32.OpenFileDialog();
@@ -44,29 +46,47 @@ namespace Hash_Calculator
 
         private async void CalculateHash_Click(object sender, RoutedEventArgs e)
         {
-            // Start progress bar
-            prgCalculateHash.IsIndeterminate = true;
+            var pthFile = txtChooseFile.Text;
+            if(!(File.Exists(pthFile)))
+            {
+                return;
+            }
 
-           Task[] arrTasks = new Task;
+            var strWorking = "Calculating...";
 
-            var tskMD5 = Task.Run(() => clcMD5("Moep"));
-            tskMD5.ContinueWith(cmpMD5 => txtMD5.Text = cmpMD5.Result.ToString(), TaskScheduler.FromCurrentSynchronizationContext());
-            arrTasks.
-            
-            await Task.Delay(2000);
+            if (chkMD5.IsChecked == true)
+            {
+                txtMD5.Text = strWorking;
+                var tskMD5 = Task.Run(() => clcMD5(pthFile));
+                tskMD5.ContinueWith(cmpMD5 => txtMD5.Text = cmpMD5.Result.ToString(), TaskScheduler.FromCurrentSynchronizationContext());
+            }
 
-            // Wait for all tasks to complete
-            Task.WaitAll();
-
-            // Stop progress bar
-            prgCalculateHash.IsIndeterminate = false;
+            if (chkSHA1.IsChecked == true)
+            {
+                txtSHA1.Text = strWorking;
+                var tskSHA1 = Task.Run(() => clcSHA1("pthFile"));
+                tskSHA1.ContinueWith(cmpSHA1 => txtSHA1.Text = cmpSHA1.Result.ToString(), TaskScheduler.FromCurrentSynchronizationContext());
+            }
+           
         }
 
-        private string clcMD5(string Moep)
+        private string clcMD5(string filepath)
         {
-            System.Threading.Thread.Sleep(5000);
-            return "1";
+            
+                var md5 = MD5.Create();
+                var stream = File.OpenRead(filepath);
+                var hash = md5.ComputeHash(stream);
+                return (BitConverter.ToString(hash).Replace("-", string.Empty));
         }
+
+        private string clcSHA1(string filepath)
+        {
+            var stream = File.OpenRead(filepath);
+            return "1";
+
+        }
+
+
 
 
     }
