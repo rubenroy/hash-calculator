@@ -1,0 +1,16 @@
+﻿<Window x:Class="Hash_Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize">
+    <Grid>
+        <Label x:Name="lblChooseFile" Content="Choose File" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.385,-0.438"/>
+        <TextBox x:Name="txtChooseFile" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" IsEnabled="False"/>
+        <Button x:Name="btnChooseFile" Content="Open" HorizontalAlignment="Left" Margin="432,30,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ChooseFile_Click"/>
+        <Separator HorizontalAlignment="Left" Height="26" Margin="10,58,0,0" VerticalAlignment="Top" Width="497"/>
+        <CheckBox x:Name="chkMD5" Content="MD5" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="23"/>
+        <TextBox x:Name="txtMD5" HorizontalAlignment="Left" Height="23" Margin="61,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446"/>
+        <Separator HorizontalAlignment="Left" Height="26" Margin="10,253,0,0" VerticalAlignment="Top" Width="499"/>
+        <Button x:Name="btnCalculateHash" Content="Calculate" HorizontalAlignment="Left" Margin="432,279,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="CalculateHash_Click"/>
+        <ProgressBar x:Name="prgCalculateHash" HorizontalAlignment="Left" Height="23" Margin="10,279,0,0" VerticalAlignment="Top" Width="417" LargeChange="0"/>
+    </Grid>
+</Window>
