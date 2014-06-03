@@ -4,7 +4,7 @@
         Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="lblChooseFile" Content="Choose File" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.385,-0.438"/>
-        <TextBox x:Name="txtChooseFile" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" IsEnabled="False"/>
+        <TextBox x:Name="txtChooseFile" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" PreviewMouseDown="ChooseFile_Click"/>
         <Button x:Name="btnChooseFile" Content="Open" HorizontalAlignment="Left" Margin="432,30,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ChooseFile_Click"/>
         <Separator HorizontalAlignment="Left" Height="26" Margin="35,58,0,0" VerticalAlignment="Top" Width="472"/>
         <CheckBox x:Name="chkMD5" Content="MD5" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="17" IsChecked="{Binding ElementName=chkAll, Path=IsChecked, Mode=OneWay}"/>

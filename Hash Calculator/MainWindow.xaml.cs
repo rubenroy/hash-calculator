@@ -72,11 +72,10 @@ namespace Hash_Calculator
 
         private string clcMD5(string filepath)
         {
-            
-                var md5 = MD5.Create();
-                var stream = File.OpenRead(filepath);
-                var hash = md5.ComputeHash(stream);
-                return (BitConverter.ToString(hash).Replace("-", string.Empty));
+            var md5 = MD5.Create();
+            var stream = File.OpenRead(filepath);
+            var hash = md5.ComputeHash(stream);
+            return (BitConverter.ToString(hash).Replace("-", string.Empty));
         }
 
         private string clcSHA1(string filepath)
@@ -85,9 +84,6 @@ namespace Hash_Calculator
             return "1";
 
         }
-
-
-
 
     }
 }
