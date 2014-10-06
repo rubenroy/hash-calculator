@@ -1,20 +1,25 @@
 ﻿<Window x:Class="Hash_Calculator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize">
-    <Grid>
-        <Label x:Name="lblChooseFile" Content="Choose File" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.385,-0.438"/>
-        <TextBox x:Name="txtChooseFile" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" PreviewMouseDown="ChooseFile_Click"/>
-        <Button x:Name="btnChooseFile" Content="Open" HorizontalAlignment="Left" Margin="432,30,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ChooseFile_Click"/>
-        <Separator HorizontalAlignment="Left" Height="26" Margin="35,58,0,0" VerticalAlignment="Top" Width="472"/>
-        <CheckBox x:Name="chkMD5" Content="MD5" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Height="17" IsChecked="{Binding ElementName=chkAll, Path=IsChecked, Mode=OneWay}"/>
-        <TextBox x:Name="txtMD5" HorizontalAlignment="Left" Height="17" Margin="61,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446" IsEnabled="{Binding ElementName=chkMD5, Path=IsChecked}" FontFamily="Consolas"/>
-        <CheckBox x:Name="chkSHA1" Content="SHA-1" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Height="17" IsChecked="{Binding ElementName=chkAll, Path=IsChecked, Mode=OneWay}"/>
-        <TextBox x:Name="txtSHA1" HorizontalAlignment="Left" Height="17" Margin="69,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="438" IsEnabled="{Binding ElementName=chkSHA1, Path=IsChecked}" FontFamily="Consolas"/>
-        <Separator HorizontalAlignment="Left" Height="26" Margin="10,253,0,0" VerticalAlignment="Top" Width="499"/>
-        <Button x:Name="btnCalculateHash" Content="Calculate" HorizontalAlignment="Left" Margin="432,279,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="CalculateHash_Click"/>
-        <ProgressBar x:Name="prgCalculateHash" HorizontalAlignment="Left" Height="23" Margin="10,279,0,0" VerticalAlignment="Top" Width="417" LargeChange="0"/>
-        <CheckBox x:Name="chkAll" Content="" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
-
+        Title="MainWindow" Height="350" Width="540" ResizeMode="NoResize">
+    <Grid Margin="0,0,10,0">
+        <Label x:Name="lblChooseFile" Content="Choose File" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.385,-0.438" Margin="6,-1,0,0"/>
+        <TextBox x:Name="txtChooseFile" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="422" PreviewMouseDown="ChooseFile_Click"/>
+        <Button x:Name="btnChooseFile" Content="Open" HorizontalAlignment="Left" Margin="437,30,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="ChooseFile_Click"/>
+        <CheckBox x:Name="chkAll" Content="" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Separator HorizontalAlignment="Left" Height="26" Margin="30,53,0,0" VerticalAlignment="Top" Width="482"/>
+        <CheckBox x:Name="chkMD5" Content="MD5" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Height="17" IsChecked="{Binding ElementName=chkAll, Path=IsChecked, Mode=OneWay}"/>
+        <TextBox x:Name="txtMD5" HorizontalAlignment="Left" Height="17" Margin="82,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="430" IsEnabled="{Binding ElementName=chkMD5, Path=IsChecked}" FontFamily="Consolas"/>
+        <CheckBox x:Name="chkSHA1" Content="SHA-1" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Height="17" IsChecked="{Binding ElementName=chkAll, Path=IsChecked, Mode=OneWay}"/>
+        <TextBox x:Name="txtSHA1" HorizontalAlignment="Left" Height="17" Margin="82,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="430" IsEnabled="{Binding ElementName=chkSHA1, Path=IsChecked}" FontFamily="Consolas"/>
+        <CheckBox x:Name="chkSHA256" Content="SHA-256" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Height="17" IsChecked="{Binding IsChecked, ElementName=chkAll, Mode=OneWay}"/>
+        <TextBox x:Name="txtSHA256" HorizontalAlignment="Left" Height="17" Margin="82,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="430" IsEnabled="{Binding IsChecked, ElementName=chkSHA256}" FontFamily="Consolas"/>
+        <CheckBox x:Name="chkSHA512" Content="SHA-512" HorizontalAlignment="Left" Margin="10,144,0,0" VerticalAlignment="Top" Height="17" IsChecked="{Binding IsChecked, ElementName=chkAll, Mode=OneWay}"/>
+        <TextBox x:Name="txtSHA512" HorizontalAlignment="Left" Height="34" Margin="82,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="430" IsEnabled="{Binding IsChecked, ElementName=chkSHA512}" FontFamily="Consolas"/>
+        <Separator HorizontalAlignment="Left" Height="26" Margin="10,253,0,0" VerticalAlignment="Top" Width="502"/>
+        <Button x:Name="btnCalculateHash" Content="Calculate" HorizontalAlignment="Left" Margin="437,279,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="CalculateHash_Click"/>
+        <ProgressBar x:Name="prgCalculateHash" HorizontalAlignment="Left" Height="23" Margin="10,279,0,0" VerticalAlignment="Top" Width="422" LargeChange="0"/>
+        
+        
     </Grid>
 </Window>

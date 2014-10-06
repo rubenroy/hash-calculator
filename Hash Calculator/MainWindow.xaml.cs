@@ -67,6 +67,20 @@ namespace Hash_Calculator
                 var tskSHA1 = Task.Run(() => clcSHA1(pthFile));
                 tskSHA1.ContinueWith(cmpSHA1 => txtSHA1.Text = cmpSHA1.Result.ToString(), TaskScheduler.FromCurrentSynchronizationContext());
             }
+
+            if (chkSHA256.IsChecked == true)
+            {
+                txtSHA256.Text = strWorking;
+                var tskSHA256 = Task.Run(() => clcSHA256(pthFile));
+                tskSHA256.ContinueWith(cmpSHA256 => txtSHA256.Text = cmpSHA256.Result.ToString(), TaskScheduler.FromCurrentSynchronizationContext());
+            }
+
+            if (chkSHA512.IsChecked == true)
+            {
+                txtSHA512.Text = strWorking;
+                var tskSHA512 = Task.Run(() => clcSHA512(pthFile));
+                tskSHA512.ContinueWith(cmpSHA512 => txtSHA512.Text = cmpSHA512.Result.ToString(), TaskScheduler.FromCurrentSynchronizationContext());
+            }
            
         }
 
@@ -84,7 +98,22 @@ namespace Hash_Calculator
             var stream = File.OpenRead(filepath);
             var hash = sha1.ComputeHash(stream);
             return BitConverter.ToString(hash).Replace("-", string.Empty);
+        }
 
+        private string clcSHA256(string filepath)
+        {
+            var sha256 = SHA256.Create();
+            var stream = File.OpenRead(filepath);
+            var hash = sha256.ComputeHash(stream);
+            return BitConverter.ToString(hash).Replace("-", string.Empty);
+        }
+
+        private string clcSHA512(string filepath)
+        {
+            var sha512 = SHA512.Create();
+            var stream = File.OpenRead(filepath);
+            var hash = sha512.ComputeHash(stream);
+            return BitConverter.ToString(hash).Replace("-", string.Empty);
         }
 
     }
