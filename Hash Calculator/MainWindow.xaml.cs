@@ -64,7 +64,7 @@ namespace Hash_Calculator
             if (chkSHA1.IsChecked == true)
             {
                 txtSHA1.Text = strWorking;
-                var tskSHA1 = Task.Run(() => clcSHA1("pthFile"));
+                var tskSHA1 = Task.Run(() => clcSHA1(pthFile));
                 tskSHA1.ContinueWith(cmpSHA1 => txtSHA1.Text = cmpSHA1.Result.ToString(), TaskScheduler.FromCurrentSynchronizationContext());
             }
            
@@ -75,13 +75,15 @@ namespace Hash_Calculator
             var md5 = MD5.Create();
             var stream = File.OpenRead(filepath);
             var hash = md5.ComputeHash(stream);
-            return (BitConverter.ToString(hash).Replace("-", string.Empty));
+            return BitConverter.ToString(hash).Replace("-", string.Empty);
         }
 
         private string clcSHA1(string filepath)
         {
+            var sha1 = SHA1.Create();
             var stream = File.OpenRead(filepath);
-            return "1";
+            var hash = sha1.ComputeHash(stream);
+            return BitConverter.ToString(hash).Replace("-", string.Empty);
 
         }
 
